@@ -1,0 +1,1 @@
+{%- assign _meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," -%}{%- assign _m = include.fecha | date: "%-m" | minus: 1 -%}{{ include.fecha | date: "%-d" }} de {{ _meses[_m] }} de {{ include.fecha | date: "%Y" }}

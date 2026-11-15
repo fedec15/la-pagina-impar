@@ -1,0 +1,6 @@
+<nav class="filtro" aria-label="Categorías">
+  <a href="{{ '/textos/' | relative_url }}"{% unless page.categoria %} aria-current="page"{% endunless %}>Todos</a>
+  {%- for c in site.data.categorias %}
+  <a href="{{ '/textos/' | append: c.slug | append: '/' | relative_url }}"{% if page.categoria == c.slug %} aria-current="page"{% endif %}>{{ c.nombre }}</a>
+  {%- endfor %}
+</nav>

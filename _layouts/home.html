@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<section class="portada">
+  <h1 class="portada__titulo">{{ site.title }}</h1>
+  <p class="portada__lema">{{ site.author }}</p>
+</section>
+
+<section class="bloque" aria-labelledby="ultimos">
+  <h2 class="rotulo" id="ultimos">Últimos textos</h2>
+  {%- assign recientes = site.textos | sort: "date" | reverse -%}
+  {%- assign recientes = recientes | slice: 0, 6 -%}
+  {% include lista-textos.html textos=recientes %}
+  <p class="mas"><a href="{{ '/textos/' | relative_url }}">Ver el índice completo →</a></p>
+</section>
+
+{%- if site.libros.size > 0 %}
+<section class="bloque" aria-labelledby="libros">
+  <h2 class="rotulo" id="libros">Libros y proyectos</h2>
+  <ul class="libros-breve">
+    {%- for l in site.libros %}
+    <li><a href="{{ l.url | relative_url }}"><em>{{ l.title }}</em></a>{% if l.editorial or l.estado %} <span class="libros-breve__estado">{{ l.editorial }}{% if l.editorial and l.estado %} · {% endif %}{{ l.estado }}</span>{% endif %}</li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}

@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article class="libro">
+  <header class="libro__cabecera">
+    <p class="rotulo">Libro</p>
+    <h1 class="libro__titulo">{{ page.title }}</h1>
+    {%- if page.subtitulo %}<p class="libro__subtitulo">{{ page.subtitulo }}</p>{% endif %}
+    <p class="texto__meta">
+      {%- if page.editorial %}{{ page.editorial }}{% endif -%}
+      {%- if page.editorial and page.estado %} · {% endif -%}
+      {%- if page.estado %}{{ page.estado }}{% endif -%}
+    </p>
+    {%- if page.compra %}
+    <p class="libro__compra"><a href="{{ page.compra }}" rel="noopener">Comprar el libro →</a></p>
+    {%- endif %}
+  </header>
+
+  <div class="prosa">
+    {{ content }}
+  </div>
+
+  {%- assign del_libro = site.textos | where: "libro", page.slug | sort: "date" | reverse -%}
+  {%- if del_libro.size > 0 %}
+  <section class="bloque">
+    <h2 class="rotulo">Textos de este libro en el archivo</h2>
+    {% include lista-textos.html textos=del_libro %}
+  </section>
+  {%- endif %}
+
+  {%- if page.ficha %}
+  <section class="bloque">
+    <h2 class="rotulo">Ficha</h2>
+    <dl class="ficha">
+      {%- for f in page.ficha %}
+      <dt>{{ f[0] }}</dt>
+      <dd>{{ f[1] | markdownify | remove: '<p>' | remove: '</p>' }}</dd>
+      {%- endfor %}
+    </dl>
+  </section>
+  {%- endif %}
+</article>
+<p class="volver"><a href="{{ '/libros/' | relative_url }}">Volver a libros</a></p>

@@ -1,0 +1,1 @@
+{%- assign _c = site.data.categorias | where: "slug", include.slug | first -%}{{ _c.nombre | default: include.slug }}

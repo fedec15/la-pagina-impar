@@ -1,0 +1,19 @@
+---
+layout: default
+title: Libros
+permalink: /libros/
+---
+<section class="archivo">
+  <h1 class="pagina__titulo">Libros y proyectos</h1>
+  <ul class="libros">
+    {%- for l in site.libros %}
+    <li class="libros__item">
+      <a href="{{ l.url | relative_url }}">
+        <span class="libros__titulo">{{ l.title }}</span>
+        {%- if l.editorial or l.estado %}<span class="indice__meta">{{ l.editorial }}{% if l.editorial and l.estado %} · {% endif %}{{ l.estado }}</span>{% endif %}
+        {%- if l.description %}<span class="libros__desc">{{ l.description }}</span>{% endif %}
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

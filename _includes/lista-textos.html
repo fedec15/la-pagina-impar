@@ -1,0 +1,13 @@
+{%- comment -%} Lista tipo índice. Parámetro: textos {%- endcomment -%}
+<ol class="indice">
+  {%- for t in include.textos %}
+  <li class="indice__item">
+    <a class="indice__enlace" href="{{ t.url | relative_url }}">
+      <span class="indice__meta">{% unless include.sin_categoria %}{% include categoria-nombre.html slug=t.category %} · {% endunless %}{% include anio.html texto=t %}</span>
+      <span class="indice__titulo">{{ t.title }}</span>
+      {%- if t.forma %}<span class="indice__forma">{{ t.forma }}</span>{% endif %}
+      <span class="indice__folio">{% include folio.html texto=t %}</span>
+    </a>
+  </li>
+  {%- endfor %}
+</ol>
