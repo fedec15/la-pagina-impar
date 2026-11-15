@@ -20,9 +20,10 @@ Cada texto es un archivo Markdown.
 6. [Otras páginas y ajustes generales](#otras-páginas-y-ajustes-generales)
 7. [Ver el sitio en la computadora](#ver-el-sitio-en-la-computadora)
 8. [Puesta en línea](#puesta-en-línea)
-9. [Problemas frecuentes](#problemas-frecuentes)
-10. [Estructura del repositorio](#estructura-del-repositorio)
-11. [Licencia](#licencia)
+9. [Control automático](#control-automático)
+10. [Problemas frecuentes](#problemas-frecuentes)
+11. [Estructura del repositorio](#estructura-del-repositorio)
+12. [Licencia](#licencia)
 
 ---
 
@@ -219,6 +220,23 @@ rama `master`, carpeta `/ (root)`. El sitio queda en <https://fedec15.github.io/
 
 A partir de ahí, cada `push` a `master` actualiza el sitio.
 
+## Control automático
+
+En cada `push` y en cada pull request, GitHub corre `.github/workflows/verificar.yml`:
+
+1. `scripts/verificar_textos.py` revisa el encabezado de cada texto y libro: que se pueda leer,
+   que tenga `title`, `category` y `date`, que la categoría exista, que el nombre del archivo
+   sea válido y que `libro` apunte a un libro existente. Avisa si hay borradores o fechas futuras.
+2. Se compila el sitio con la misma versión de Jekyll que GitHub Pages, en modo estricto.
+
+Si algo falla, el commit queda marcado con una ✗ en GitHub, llega un mail y el error aparece
+en la pestaña **Actions** con el nombre del archivo y la línea.
+
+Para revisar antes de subir: `python3 scripts/verificar_textos.py`.
+
+**Protección de `master`** (configurada en GitHub, **Settings → Rules → Rulesets**): no se puede
+borrar la rama ni reescribir su historial, y el control automático tiene que pasar.
+
 ## Problemas frecuentes
 
 **Un texto no aparece.**
@@ -258,6 +276,8 @@ _includes/              piezas reutilizables
   fecha.html, anio.html   fechas en castellano
   categoria-nombre.html
 assets/css/impar.css    todo el diseño
+scripts/                verificación de textos (no se publica)
+.github/workflows/      control automático en GitHub
 index.html              portada
 textos/                 índice (index.html) y una página por categoría
 libros/index.html       lista de libros

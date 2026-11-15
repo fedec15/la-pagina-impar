@@ -1,0 +1,24 @@
+# Control automático: revisa los textos y compila el sitio en cada push y pull request.
+# Si algo falla, GitHub marca el commit con una ✗ y avisa por mail.
+name: Verificar sitio
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Revisar encabezados de textos y libros
+        run: |
+          pip install --quiet pyyaml
+          python3 scripts/verificar_textos.py
+
+      - name: Compilar el sitio (misma versión de Jekyll que GitHub Pages)
+        run: |
+          docker run --rm -e JEKYLL_ROOTLESS=1 -u "$(id -u):$(id -g)" \
+            -v "$PWD":/srv/jekyll jekyll/jekyll:pages \
+            jekyll build --strict_front_matter --trace
