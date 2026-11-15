@@ -7,6 +7,11 @@ description: Poemas, relatos, ensayos y otras formas de escritura de Federico Ca
 author: Federico Castellano
 email: fedec15@gmail.com
 sitio_academico: https://federicocastellano.wordpress.com/
+
+# Contador de visitas (GoatCounter). Poné acá el código de tu cuenta, por
+# ejemplo «lapaginaimpar» si tu panel es lapaginaimpar.goatcounter.com.
+# Vacío = sin contador.
+goatcounter: ""
 lang: es
 
 url: "https://fedec15.github.io"

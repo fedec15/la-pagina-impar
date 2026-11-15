@@ -13,7 +13,7 @@
   --serif: "Literata", "Source Serif 4", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --columna: 43.75rem;      /* ≈ 700px */
+  --columna: 40rem;         /* ≈ 640px: unas 75 letras por línea */
   --margen: 1.25rem;
 }
 

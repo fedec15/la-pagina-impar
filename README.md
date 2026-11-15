@@ -185,11 +185,14 @@ Texto de contratapa o presentación.
 | Nombre del sitio, autor, correo, sitio académico, URL | `_config.yml` |
 | Nombres y orden de las categorías | `_data/categorias.yml` |
 | Colores, tipografías y todo el diseño | `assets/css/impar.css` |
+| Contador de visitas | `goatcounter` en `_config.yml` (ver abajo) |
 
 Los cambios en `_config.yml` necesitan reiniciar el servidor local (`docker restart la-pagina-impar`).
 
 **Diseño:** fondo `#F7F5F0`, texto `#262522`, secundario `#77736B`, líneas `#DCD8CE` y acento `#A16E55`.
-Literata para los textos y títulos, Inter para la navegación y los datos. Columna de lectura de unos 700 px.
+Literata para los textos y títulos, Inter para la navegación y los datos. Columna de lectura de unos 640 px (`--columna`), unas 75 letras por línea.
+
+**Contador de visitas:** usa [GoatCounter](https://www.goatcounter.com), gratuito y sin cookies. Para activarlo: crear una cuenta, activar en *Settings* la opción *Allow adding visitor counts on your website* y poner el código de la cuenta en `goatcounter:` dentro de `_config.yml`. El total aparece al pie de cada página («· 1.234 visitas»); las estadísticas detalladas se ven en el panel de GoatCounter. Las visitas desde `localhost` no se cuentan. Con `goatcounter: ""` el contador desaparece.
 
 ## Ver el sitio en la computadora
 
