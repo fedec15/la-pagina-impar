@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────
+#  La página impar
+# ─────────────────────────────────────────────
+title: La página impar
+tagline: Federico Castellano
+description: Poemas, relatos, ensayos y otras formas de escritura de Federico Castellano.
+author: Federico Castellano
+email: fedec15@gmail.com
+sitio_academico: https://federicocastellano.wordpress.com/
+lang: es
+
+url: "https://fedec15.github.io"
+baseurl: "/la-pagina-impar"
+
+# Colecciones: cada texto y cada libro es un archivo Markdown.
+collections:
+  textos:
+    output: true
+    permalink: /textos/:name/
+  libros:
+    output: true
+    permalink: /libros/:name/
+
+defaults:
+  - scope: { path: "", type: textos }
+    values: { layout: texto }
+  - scope: { path: "", type: libros }
+    values: { layout: libro }
+  - scope: { path: "" }
+    values: { layout: pagina }
+
+# Sin tema: el diseño propio está en assets/css/impar.css.
+theme: null
+
+# Plugins incluidos en GitHub Pages (no requieren instalación extra).
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  smart_quotes: ["lsquo", "rsquo", "laquo", "raquo"]
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor

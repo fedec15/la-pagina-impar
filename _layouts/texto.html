@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{%- assign orden = site.textos | sort: "date" -%}
+{%- for t in orden -%}
+  {%- if t.url == page.url -%}
+    {%- assign i = forloop.index0 -%}
+    {%- assign folio = forloop.index | times: 2 | minus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign i_ant = i | minus: 1 -%}
+{%- assign i_sig = i | plus: 1 -%}
+{%- if i > 0 %}{% assign anterior = orden[i_ant] %}{% endif -%}
+{%- assign siguiente = orden[i_sig] -%}
+{%- assign formato = page.formato | default: "" -%}
+{%- if formato == "" and page.category == "poesia" %}{% assign formato = "verso" %}{% endif -%}
+
+<article class="texto{% if formato == 'verso' %} texto--verso{% endif %}">
+  <div class="cornisa" aria-hidden="true">
+    <span>{% include categoria-nombre.html slug=page.category %}</span>
+    <span class="cornisa__folio">{{ folio }}</span>
+  </div>
+
+  <header class="texto__cabecera">
+    <h1 class="texto__titulo">{{ page.title }}</h1>
+    <p class="texto__meta">
+      {%- if page.forma %}{{ page.forma }}{% else %}{% include categoria-nombre.html slug=page.category %}{% endif %} · {% include fecha.html fecha=page.date -%}
+      {%- assign _anio_pub = page.date | date: "%Y" | plus: 0 -%}
+      {%- if page.year and page.year != _anio_pub %} · Escrito en {{ page.year }}{% endif -%}
+    </p>
+    {%- if page.dedicatoria %}<p class="texto__dedicatoria">{{ page.dedicatoria }}</p>{% endif %}
+    {%- if page.epigrafe %}
+    <blockquote class="texto__epigrafe">
+      {{ page.epigrafe | markdownify }}
+    </blockquote>
+    {%- endif %}
+  </header>
+
+  <div class="texto__cuerpo">
+    {%- comment -%}
+      Los saltos de línea se respetan desde el CSS, así que se quitan los <br> que genera
+      Markdown con dos espacios al final de línea (si no, el salto aparece doble).
+      Los párrafos que empiezan con raya (diálogos) llevan sangría.
+    {%- endcomment -%}
+    {{ content | replace: '<br />', '' | replace: '<p>—', '<p class="dialogo">—' }}
+  </div>
+
+  {%- if page.libro %}
+  {%- assign libro = site.libros | where_exp: "l", "l.slug == page.libro" | first -%}
+  {%- if libro %}<p class="texto__libro">Este texto forma parte de <a href="{{ libro.url | relative_url }}"><em>{{ libro.title }}</em></a>.</p>{% endif %}
+  {%- endif %}
+
+  <hr class="texto__fin">
+</article>
+
+<nav class="paginacion" aria-label="Otros textos">
+  {%- if anterior %}
+  <a class="paginacion__ant" href="{{ anterior.url | relative_url }}" rel="prev">
+    <span class="paginacion__rotulo">← Anterior</span>
+    <span class="paginacion__titulo">{{ anterior.title }}</span>
+  </a>
+  {%- else %}<span></span>{% endif %}
+  {%- if siguiente %}
+  <a class="paginacion__sig" href="{{ siguiente.url | relative_url }}" rel="next">
+    <span class="paginacion__rotulo">Siguiente →</span>
+    <span class="paginacion__titulo">{{ siguiente.title }}</span>
+  </a>
+  {%- endif %}
+</nav>
+<p class="volver"><a href="{{ '/textos/' | relative_url }}">Volver al índice</a></p>

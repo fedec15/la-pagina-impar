@@ -1,0 +1,513 @@
+/* ─────────────────────────────────────────────
+   La página impar
+   Editorial, sobrio, pensado para leer.
+   ───────────────────────────────────────────── */
+
+:root {
+  --fondo: #F7F5F0;
+  --texto: #262522;
+  --texto-2: #77736B;
+  --linea: #DCD8CE;
+  --acento: #A16E55;
+
+  --serif: "Literata", "Source Serif 4", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --columna: 43.75rem;      /* ≈ 700px */
+  --margen: 1.25rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* La línea del lomo: en una página impar, la encuadernación queda a la izquierda. */
+@media (min-width: 64rem) {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - var(--columna) / 2 - 4rem);
+    border-left: 1px solid var(--linea);
+    pointer-events: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--linea);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover { color: var(--acento); text-decoration-color: currentColor; }
+a:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+
+::selection { background: #E8DCD3; }
+
+.saltar {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: var(--texto);
+  color: var(--fondo);
+  font-family: var(--sans);
+  font-size: 0.875rem;
+}
+.saltar:focus { left: 0; }
+
+.hoja {
+  max-width: calc(var(--columna) + 2 * var(--margen));
+  margin: 0 auto;
+  padding: 0 var(--margen);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+
+/* ── Cabecera ───────────────────────────────── */
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding: 2rem 0 1.25rem;
+  border-bottom: 1px solid var(--linea);
+}
+.cabecera__marca {
+  font-size: 1.125rem;
+  text-decoration: none;
+  letter-spacing: 0.005em;
+}
+.cabecera__nav {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.cabecera__nav a {
+  color: var(--texto-2);
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid transparent;
+}
+.cabecera__nav a:hover { color: var(--texto); }
+.cabecera__nav a[aria-current] {
+  color: var(--texto);
+  border-bottom-color: var(--acento);
+}
+
+/* ── Rótulos y utilidades ───────────────────── */
+
+.rotulo {
+  margin: 0 0 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.bloque { margin-top: 4.5rem; }
+
+.mas {
+  margin: 1.75rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+}
+.mas a { text-decoration: none; color: var(--texto-2); }
+.mas a:hover { color: var(--acento); }
+
+.volver {
+  margin: 2.5rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+}
+.volver a { color: var(--texto-2); }
+
+.contacto {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linea);
+}
+.contacto dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 2rem;
+  margin: 0;
+}
+.contacto dt {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  padding-top: 0.25rem;
+}
+.contacto dd { margin: 0; overflow-wrap: anywhere; }
+.prosa .contacto h2 { margin: 0 0 1rem; }
+
+.vacio { color: var(--texto-2); font-style: italic; }
+
+/* ── Portada ────────────────────────────────── */
+
+.portada { padding: 6rem 0 1rem; }
+.portada__titulo {
+  margin: 0;
+  font-size: clamp(2.6rem, 9vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.portada__lema {
+  margin: 1.5rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+/* ── Índice (lista de textos) ───────────────── */
+
+.indice {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--linea);
+}
+.indice__item { border-bottom: 1px solid var(--linea); }
+.indice__enlace {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 1.5rem;
+  padding: 1.15rem 0 1.25rem;
+  text-decoration: none;
+}
+.indice__meta {
+  grid-column: 1;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.indice__titulo {
+  grid-column: 1;
+  margin-top: 0.2rem;
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+.indice__forma {
+  grid-column: 1;
+  font-style: italic;
+  color: var(--texto-2);
+  font-size: 0.95rem;
+}
+.indice__folio {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--texto-2);
+}
+.indice__enlace:hover .indice__titulo { color: var(--acento); }
+
+/* ── Archivo y páginas ──────────────────────── */
+
+.archivo, .pagina, .libro { padding-top: 4rem; }
+
+.pagina__titulo {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0 0 2rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.filtro a {
+  color: var(--texto-2);
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid transparent;
+}
+.filtro a:hover { color: var(--texto); }
+.filtro a[aria-current] { color: var(--texto); border-bottom-color: var(--acento); }
+
+.grupo + .grupo { margin-top: 3.5rem; }
+.grupo .rotulo a { text-decoration: none; }
+.grupo .rotulo a:hover { color: var(--acento); }
+
+.prosa > :first-child { margin-top: 0; }
+.prosa p { margin: 0 0 1.1em; }
+.prosa h2 {
+  margin: 3rem 0 1rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.prosa .verso p { white-space: pre-wrap; }
+
+/* ── Texto individual ───────────────────────── */
+
+.texto { padding-top: 2.5rem; }
+
+/* Cornisa: el encabezado de página de un libro, con el folio impar a la derecha. */
+.cornisa {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.cornisa__folio {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.texto__cabecera { margin: 4.5rem 0 3.5rem; }
+.texto__titulo {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.texto__meta {
+  margin: 1rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.texto__dedicatoria {
+  margin: 2.5rem 0 0;
+  font-style: italic;
+  color: var(--texto-2);
+}
+.texto__epigrafe {
+  margin: 2.5rem 0 0 auto;
+  max-width: 24rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--texto-2);
+  text-align: right;
+}
+.texto__epigrafe p { margin: 0; white-space: pre-line; }
+.texto__epigrafe p + p { margin-top: 0.75em; }
+.texto__epigrafe em { font-style: normal; }
+
+.texto__cuerpo {
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+.texto__cuerpo p {
+  margin: 0 0 1.25em;
+  white-space: pre-wrap;   /* se respetan los saltos y sangrías del Markdown */
+}
+.texto__cuerpo h2 {
+  margin: 3rem 0 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.texto__cuerpo hr {
+  margin: 2.5rem auto;
+  width: 3rem;
+  border: 0;
+  border-top: 1px solid var(--linea);
+}
+/* Diálogos y citas: las únicas piezas con sangría. */
+.texto__cuerpo .dialogo { text-indent: 1.5em; }
+.texto__cuerpo blockquote { margin: 0 0 1.25em 1.5em; }
+.texto__cuerpo blockquote p { margin: 0 0 0.9em; text-indent: 0; }
+.texto__cuerpo blockquote p:last-child { margin-bottom: 0; }
+
+/* Poesía: sin guiones de corte y con más aire entre estrofas. */
+.texto--verso .texto__cuerpo { hyphens: manual; -webkit-hyphens: manual; }
+.texto--verso .texto__cuerpo p { margin: 0 0 1.6em; }
+
+.texto__libro {
+  margin: 3rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  color: var(--texto-2);
+}
+
+.texto__fin {
+  margin: 4rem 0 0;
+  width: 2.5rem;
+  border: 0;
+  border-top: 1px solid var(--acento);
+}
+
+.paginacion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linea);
+}
+.paginacion a { text-decoration: none; display: block; }
+.paginacion__sig { text-align: right; grid-column: 2; }
+.paginacion__rotulo {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.paginacion__titulo { display: block; margin-top: 0.3rem; font-size: 1.1rem; line-height: 1.35; }
+.paginacion a:hover .paginacion__titulo { color: var(--acento); }
+
+/* ── Libros ─────────────────────────────────── */
+
+.libro__cabecera { margin-bottom: 3rem; }
+.libro__titulo {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.libro__compra {
+  margin: 2rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.libro__compra a {
+  display: inline-block;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--acento);
+  color: var(--acento);
+  text-decoration: none;
+}
+.libro__compra a:hover { background: var(--acento); color: var(--fondo); }
+.libro__subtitulo { margin: 0.75rem 0 0; font-size: 1.2rem; color: var(--texto-2); }
+
+.libros { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
+.libros__item { border-bottom: 1px solid var(--linea); }
+.libros__item a { display: block; padding: 1.5rem 0; text-decoration: none; }
+.libros__titulo { display: block; font-size: 1.6rem; font-style: italic; line-height: 1.25; margin-bottom: 0.35rem; }
+.libros__desc { display: block; margin-top: 0.5rem; color: var(--texto-2); }
+.libros__item a:hover .libros__titulo { color: var(--acento); }
+
+.libros-breve { list-style: none; margin: 0; padding: 0; font-size: 1.2rem; }
+.libros-breve li { padding: 0.35rem 0; }
+.libros-breve a { text-decoration: none; }
+.libros-breve__estado {
+  margin-left: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.ficha {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 2rem;
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+}
+.ficha dt {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  padding-top: 0.2rem;
+}
+.ficha dd { margin: 0; }
+
+/* ── Pie ────────────────────────────────────── */
+
+.pie {
+  margin-top: 6rem;
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--linea);
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.pie a { text-decoration: none; }
+.pie__sep { margin: 0 0.5rem; }
+
+/* ── Celulares ──────────────────────────────── */
+
+@media (max-width: 36rem) {
+  body { font-size: 1rem; }
+  .cabecera { padding-top: 1.5rem; }
+  .cabecera__nav { gap: 1.1rem; }
+  .portada { padding-top: 3.5rem; }
+  .bloque { margin-top: 3.5rem; }
+  .archivo, .pagina, .libro { padding-top: 2.75rem; }
+  .indice__titulo { font-size: 1.25rem; }
+  .texto__cabecera { margin: 3rem 0 2.5rem; }
+  .texto__cuerpo { font-size: 1.0625rem; line-height: 1.7; }
+  .paginacion { grid-template-columns: 1fr; }
+  .paginacion__sig { grid-column: 1; text-align: left; }
+  .ficha { grid-template-columns: 1fr; gap: 0.15rem; }
+  .ficha dd { margin-bottom: 0.75rem; }
+}
+
+/* ── Impresión ──────────────────────────────── */
+
+@media print {
+  body { background: #fff; }
+  body::before, .cabecera, .paginacion, .volver, .pie, .saltar { display: none; }
+  .texto__cuerpo { font-size: 11pt; }
+}

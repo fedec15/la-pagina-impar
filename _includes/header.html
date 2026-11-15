@@ -1,0 +1,9 @@
+<header class="cabecera">
+  <a class="cabecera__marca" href="{{ '/' | relative_url }}">La página impar</a>
+  <nav class="cabecera__nav" aria-label="Principal">
+    {%- assign seccion = page.url | split: '/' | where_exp: "s", "s != ''" | first -%}
+    <a href="{{ '/textos/' | relative_url }}"{% if seccion == 'textos' %} aria-current="page"{% endif %}>Textos</a>
+    <a href="{{ '/libros/' | relative_url }}"{% if seccion == 'libros' %} aria-current="page"{% endif %}>Libros</a>
+    <a href="{{ '/acerca-de/' | relative_url }}"{% if seccion == 'acerca-de' %} aria-current="page"{% endif %}>Acerca de</a>
+  </nav>
+</header>

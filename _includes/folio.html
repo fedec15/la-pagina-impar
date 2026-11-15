@@ -1,0 +1,2 @@
+{%- assign _orden = site.textos | sort: "date" -%}
+{%- for _t in _orden -%}{%- if _t.url == include.texto.url -%}{{ forloop.index | times: 2 | minus: 1 }}{%- endif -%}{%- endfor -%}

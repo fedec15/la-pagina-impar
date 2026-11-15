@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{%- assign todos = site.textos | sort: "date" | reverse -%}
+<section class="archivo">
+  <h1 class="pagina__titulo">{{ page.title }}</h1>
+  {% include filtro.html %}
+
+  {%- if page.categoria %}
+    {%- assign lista = todos | where: "category", page.categoria -%}
+    {%- if lista.size > 0 %}
+  {% include lista-textos.html textos=lista sin_categoria=true %}
+    {%- else %}
+  <p class="vacio">Todavía no hay textos en esta sección.</p>
+    {%- endif %}
+
+  {%- else %}
+    {%- comment -%} Vista completa: una sección por categoría, cada una ordenada por fecha. {%- endcomment -%}
+    {%- for c in site.data.categorias %}
+      {%- assign lista = todos | where: "category", c.slug -%}
+      {%- if lista.size > 0 %}
+  <section class="grupo" aria-labelledby="grupo-{{ c.slug }}">
+    <h2 class="rotulo" id="grupo-{{ c.slug }}"><a href="{{ '/textos/' | append: c.slug | append: '/' | relative_url }}">{{ c.nombre }}</a></h2>
+    {% include lista-textos.html textos=lista sin_categoria=true %}
+  </section>
+      {%- endif %}
+    {%- endfor %}
+  {%- endif %}
+</section>
