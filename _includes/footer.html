@@ -2,4 +2,23 @@
   <span>© {{ site.author }}</span>
   <span class="pie__sep" aria-hidden="true">·</span>
   <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  {%- if site.goatcounter and site.goatcounter != "" %}
+  <span class="pie__visitas" id="visitas" hidden>
+    <span class="pie__sep" aria-hidden="true">·</span><span id="visitas-n"></span> visitas
+  </span>
+  {%- endif %}
 </footer>
+{%- if site.goatcounter and site.goatcounter != "" %}
+{%- assign gc = "https://" | append: site.goatcounter | append: ".goatcounter.com" %}
+<script data-goatcounter="{{ gc }}/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+  fetch('{{ gc }}/counter/TOTAL.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || !d.count) return;
+      document.getElementById('visitas-n').textContent = d.count.replace(/[,\u202f\s]/g, '.');
+      document.getElementById('visitas').hidden = false;
+    })
+    .catch(function () {});
+</script>
+{%- endif %}

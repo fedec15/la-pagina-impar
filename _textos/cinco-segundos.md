@@ -6,7 +6,7 @@ date: 2026-08-28
 year: 2026
 ---
 
-No recuerdo la fecha. Creo que fue en 2003, o quizá en 2004. Hacía poco que había terminado el colegio secundario. Estudiaba abogacía junto a Pablo, mi mejor amigo. En aquellos tiempos, solíamos frecuentar una casa quinta en Los Hornillos, un paraje inhóspito de Traslasierra, cerca de Nono. La casa pertenecía a la familia de Pablo. Según me había contado, uno de sus bisabuelos paternos la había construido con sus propias manos hacía poco más de un siglo. En el living todavía colgaba un enorme retrato suyo, en blanco y negro. Tenía un bigote espeso y una mirada penetrante.
+No recuerdo la fecha. Creo que fue en 2003, o quizá en 2004. Hacía poco que había terminado el colegio secundario. Estudiaba abogacía junto a Pablo, mi mejor amigo. En aquellos tiempos, solíamos frecuentar una casa quinta en Los Hornillos, un paraje inhóspito de Traslasierra, cerca de Nono. La casa pertenecía a la familia de Pablo. Según me había contado, uno de sus bisabuelos paternos la había construido con sus propias manos hacía poco más de un siglo. En el living todavía colgaba un enorme retrato suyo, en blanco y negro. Tenía un bigote espeso y la mirada rígida.
 
 La quinta era un chalet hermoso, típico de las sierras cordobesas. Estaba levantado íntegramente en piedra y ladrillo, con tejas rojas, pisos de cerámica rústica y esas baldosas de figuras geométricas que ya casi no se ven. La rodeaba un jardín inmenso, repleto de árboles frutales: higueras, naranjos, ciruelos e incluso membrillos.
 
