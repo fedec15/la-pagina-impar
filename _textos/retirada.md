@@ -12,7 +12,7 @@ Nos contó que tenía planeado viajar, irse lejos de Chile. No sabía muy bien a
 
 El asunto es que, camino a la terminal de ómnibus, en pleno microcentro de Santiago, se cruzó con ella. Sí, con Paz. Era un martes frío y lluvioso de mayo. Fue alrededor de las 9.30 de la mañana, recién comenzada la jornada.
 
-Según me contaron, Paz iba camino a la oficina, también demorada. Vestía un traje negro y una camisa de seda a rayas que le quedaban impecables. Un largo tapado de gabardina beige cubría casi la totalidad de su diminuta figura. Su mano izquierda sostenía un inmenso paraguas negro, que usaba para esconderse de a ratos, cuando la lluvia se ponía más virulenta. Tenía la mirada cansada y cargaba orgullosa algunas arrugas. Los años y el sufrimiento también habían dejado marcas en su cuerpo.
+Según me contaron, Paz iba camino a la oficina, también demorada. Vestía un traje negro y una camisa de seda a rayas que le quedaban impecables. Un largo tapado de gabardina beige cubría casi la totalidad de su diminuta figura. Su mano izquierda sostenía un inmenso paraguas negro, que usaba para esconderse de a ratos, cuando la lluvia se ponía más virulenta. Tenía la mirada cansada y cargaba orgullosa algunas arrugas. Los años y aquel mal trago también habían dejado marcas en su cuerpo.
 
 Fue en la esquina de O’Higgins y San Martín, a unas pocas cuadras de la terminal. Martín la identificó de inmediato. Se quería matar. No sabía dónde esconderse. Sus piernas quedaron congeladas. Todo a su alrededor —repitió varias veces— se había desvanecido. Ella, hasta donde llegué a escuchar, no lo había reconocido. Estaba parada justo en la vereda del frente, semienvuelta en aquel paraguas, esperando distraída que el semáforo se pusiera en verde.
 
@@ -27,7 +27,7 @@ En algún punto, la escena me recordó a mí de chico: ese vértigo que te agarr
 *¿Y si me acerco? ¿Qué le digo? ¿Y si le digo que…?* Levanta la mano como para saludar y, a mitad de camino, se rasca la nuca.
 {: .dialogo}
 
-Martín es todo menos tonto. Aunque el miedo lo tenía acorralado, ya había pensado mil maneras de zafar. Estaba dispuesto a cualquier cosa, menos a cruzar esa calle. Había que dar demasiadas explicaciones; explicaciones que, en realidad, no existían. Por eso era mejor hacerse el boludo.
+Martín es todo menos tonto. Aunque el miedo lo tenía acorralado, ya había pensado mil maneras de zafar. Estaba dispuesto a cualquier cosa, menos a concretar el encuentro. Había que dar demasiadas explicaciones; explicaciones que, en realidad, no existían. Por eso era mejor hacerse el boludo.
 
 Y así fue. Pegó media vuelta y se escondió entre la turba de oficinistas que esperaba ansiosa el cambio de luz. Le dio la espalda a Paz. No era la primera vez. Cuando el semáforo se puso en verde, la multitud avanzó hacia la vereda de enfrente y él quedó a contramano, abriéndose paso a los codazos en dirección contraria a la terminal. Todos avanzaban; él, en retirada. No le importó. Ya habría otros micros. Lo urgente ahora era no tener que mirarla a la cara.
 
